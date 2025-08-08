@@ -15,3 +15,13 @@ Do NOT under any circumstances deviate from @techContext.md
 ## Github
 
 When working with github, you must use the GITHUB_TOKEN found in the .env file.
+
+### Git Configuration
+
+Git is already configured with:
+- Credential helper enabled (`credential.helper=store`)
+- GitHub username set for credentials
+- Secure credential storage in ~/.git-credentials
+- User identity configured for commits
+
+Do NOT modify git remote URLs to include tokens directly, as this compromises security. The credential helper will automatically handle authentication.
