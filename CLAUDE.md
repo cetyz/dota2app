@@ -12,7 +12,7 @@ Red: Write a failing test for the functionality you want to implement
 Green: Write the minimal amount of code needed to make that test pass
 Refactor: Clean up and improve the code while ensuring all tests still pass
 
-Once done with a task in @PLAN.md, always make sure to check it off the list.
+IMPORTANT HYGIENE STEP: The final item in your list of Todos MUST be "Check off completed tasks in @PLAN.md"
 
 ## Important Notes
 

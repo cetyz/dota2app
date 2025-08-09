@@ -3,35 +3,35 @@
 ## Phase 1: Project Setup and Configuration
 
 ### Initial Setup
-- [ ] Create a new Next.js 14+ project with TypeScript using `npx create-next-app@latest dota2-draft-tool --typescript --app --tailwind`
-- [ ] Remove all default Next.js boilerplate code from app/page.tsx
-- [ ] Delete default styles from app/globals.css except Tailwind directives
-- [ ] Create a .env.local file in the root directory
-- [ ] Add NEXT_PUBLIC_OPENDOTA_API_URL=https://api.opendota.com/api to .env.local
-- [ ] Create a .env.example file with the same structure but empty values
-- [ ] Add .env.local to .gitignore if not already present
-- [ ] Initialize git repository with `git init` if not already done
-- [ ] Create initial commit with message "Initial project setup"
+- [x] Create a new Next.js 14+ project with TypeScript using `npx create-next-app@latest dota2-draft-tool --typescript --app --tailwind`
+- [x] Remove all default Next.js boilerplate code from app/page.tsx
+- [x] Delete default styles from app/globals.css except Tailwind directives
+- [x] Create a .env.local file in the root directory
+- [x] Add NEXT_PUBLIC_OPENDOTA_API_URL=https://api.opendota.com/api to .env.local
+- [x] Create a .env.example file with the same structure but empty values
+- [x] Add .env.local to .gitignore if not already present
+- [x] Initialize git repository with `git init` if not already done
+- [x] Create initial commit with message "Initial project setup"
 
 ### Tailwind Configuration
-- [ ] Open tailwind.config.ts file
-- [ ] Add custom color palette to theme.extend.colors with values: background: '#121315', accentPrimary: '#ad3f21', black: '#000000', textLight: '#d1d1c6', textSecondary: '#cecece'
-- [ ] Update content array in tailwind.config.ts to include all component paths
-- [ ] Create a new CSS file app/styles/variables.css for CSS custom properties
-- [ ] Define CSS variables in variables.css matching the color palette
-- [ ] Import variables.css in app/globals.css
+- [x] Open tailwind.config.ts file
+- [x] Add custom color palette to theme.extend.colors with values: background: '#121315', accentPrimary: '#ad3f21', black: '#000000', textLight: '#d1d1c6', textSecondary: '#cecece'
+- [x] Update content array in tailwind.config.ts to include all component paths
+- [x] Create a new CSS file app/styles/variables.css for CSS custom properties
+- [x] Define CSS variables in variables.css matching the color palette
+- [x] Import variables.css in app/globals.css
 
 ### Project Structure
-- [ ] Create folder app/components in the project root
-- [ ] Create folder app/components/ui for UI components
-- [ ] Create folder app/components/draft for draft-specific components
-- [ ] Create folder app/lib for utility functions and API calls
-- [ ] Create folder app/lib/api for API integration functions
-- [ ] Create folder app/types for TypeScript type definitions
-- [ ] Create folder app/hooks for custom React hooks
-- [ ] Create folder app/contexts for React context providers
-- [ ] Create folder public/images/heroes for hero portraits
-- [ ] Create folder app/constants for constant values
+- [x] Create folder app/components in the project root
+- [x] Create folder app/components/ui for UI components
+- [x] Create folder app/components/draft for draft-specific components
+- [x] Create folder app/lib for utility functions and API calls
+- [x] Create folder app/lib/api for API integration functions
+- [x] Create folder app/types for TypeScript type definitions
+- [x] Create folder app/hooks for custom React hooks
+- [x] Create folder app/contexts for React context providers
+- [x] Create folder public/images/heroes for hero portraits
+- [x] Create folder app/constants for constant values
 
 ## Phase 2: TypeScript Interfaces and Type Definitions
 
