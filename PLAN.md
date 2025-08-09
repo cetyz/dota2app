@@ -86,16 +86,16 @@
 ## Phase 4: Core UI Components
 
 ### Hero Portrait Component
-- [ ] Create file app/components/ui/HeroPortrait.tsx
-- [ ] Define component props: hero (IHero | null), onClick (function), isSelected (boolean), size ('small' | 'medium' | 'large')
-- [ ] Implement conditional rendering for empty state (show placeholder when hero is null)
-- [ ] Add Next.js Image component for hero portrait with proper sizing
-- [ ] Implement hover effect with scale transform and border highlight
-- [ ] Add selected state styling with accent color border
-- [ ] Create loading skeleton state for when image is loading
-- [ ] Add hero name tooltip on hover using CSS
-- [ ] Implement click handler that calls onClick prop with hero data
-- [ ] Add disabled state styling when hero is already picked
+- [x] Create file app/components/ui/HeroPortrait.tsx
+- [x] Define component props: hero (IHero | null), onClick (function), isSelected (boolean), size ('small' | 'medium' | 'large')
+- [x] Implement conditional rendering for empty state (show placeholder when hero is null)
+- [x] Add Next.js Image component for hero portrait with proper sizing
+- [x] Implement hover effect with scale transform and border highlight
+- [x] Add selected state styling with accent color border
+- [x] Create loading skeleton state for when image is loading
+- [x] Add hero name tooltip on hover using CSS
+- [x] Implement click handler that calls onClick prop with hero data
+- [x] Add disabled state styling when hero is already picked
 
 ### Role Selector Component
 - [ ] Create file app/components/ui/RoleSelector.tsx
