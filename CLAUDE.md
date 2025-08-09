@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Unless there's a specific request, always refer to @PLAN.md when taking actions.
 
-For each item in @PLAN.md, attempt to complete it using a Test-Driven Development (TDD) approach where applicable. Simpler tasks do not require TDD.
+IMPORTANT PROGRAMMING APPROACH: For each item in @PLAN.md, attempt to complete it using a Test-Driven Development (TDD) approach where applicable. Simpler tasks do not require TDD.
 3 Steps:
 Red: Write a failing test for the functionality you want to implement
 Green: Write the minimal amount of code needed to make that test pass

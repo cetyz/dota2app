@@ -59,21 +59,21 @@
 ## Phase 3: OpenDota API Integration
 
 ### API Client Setup
-- [ ] Create file app/lib/api/opendota.ts
-- [ ] Create constant OPENDOTA_BASE_URL from environment variable
-- [ ] Implement function fetchWithTimeout that adds timeout to fetch requests (default 5000ms)
-- [ ] Implement error handling wrapper function handleApiError that formats API errors consistently
-- [ ] Create function buildUrl that constructs API URLs with query parameters
+- [x] Create file app/lib/api/opendota.ts
+- [x] Create constant OPENDOTA_BASE_URL from environment variable
+- [x] Implement function fetchWithTimeout that adds timeout to fetch requests (default 5000ms)
+- [x] Implement error handling wrapper function handleApiError that formats API errors consistently
+- [x] Create function buildUrl that constructs API URLs with query parameters
 
 ### Hero Data Fetching
-- [ ] Implement async function fetchAllHeroes that fetches from /heroes endpoint
-- [ ] Add response caching to fetchAllHeroes using Next.js cache with 1 hour revalidation
-- [ ] Implement async function fetchHeroStats that fetches from /heroStats endpoint
-- [ ] Create function transformHeroData that maps API response to IHero interface
-- [ ] Implement retry logic for failed API calls (max 3 retries with exponential backoff)
-- [ ] Create function getHeroImageUrl that returns CDN URL for hero portraits
-- [ ] Implement function filterHeroesByRole that filters heroes array by role
-- [ ] Create function searchHeroes that searches heroes by name (partial match)
+- [x] Implement async function fetchAllHeroes that fetches from /heroes endpoint
+- [x] Add response caching to fetchAllHeroes using Next.js cache with 1 hour revalidation
+- [x] Implement async function fetchHeroStats that fetches from /heroStats endpoint
+- [x] Create function transformHeroData that maps API response to IHero interface
+- [x] Implement retry logic for failed API calls (max 3 retries with exponential backoff)
+- [x] Create function getHeroImageUrl that returns CDN URL for hero portraits
+- [x] Implement function filterHeroesByRole that filters heroes array by role
+- [x] Create function searchHeroes that searches heroes by name (partial match)
 
 ### Data Caching Layer
 - [ ] Create file app/lib/api/cache.ts
