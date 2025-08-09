@@ -36,26 +36,25 @@
 ## Phase 2: TypeScript Interfaces and Type Definitions
 
 ### Hero Data Types
-- [ ] Create file app/types/hero.ts
-- [ ] Define interface IHero with properties: id (number), name (string), localized_name (string), primary_attr (string), attack_type (string), roles (string[])
-- [ ] Define interface IHeroStats with properties: base_health, base_mana, base_armor, base_attack_min, base_attack_max, base_str, base_agi, base_int
-- [ ] Define type HeroRole as union type: 'Carry' | 'Mid' | 'Offlane' | 'Support' | 'Hard Support'
-- [ ] Define type Position as union type: 1 | 2 | 3 | 4 | 5
-- [ ] Create mapping constant ROLE_TO_POSITION mapping HeroRole to Position
+- [x] Create file app/types/hero.ts
+- [x] Define interface IHero with properties: id (number), name (string), localized_name (string), primary_attr (string), attack_type (string), roles (string[])
+- [x] Define interface IHeroStats with properties: base_health, base_mana, base_armor, base_attack_min, base_attack_max, base_str, base_agi, base_int
+- [x] Define type HeroRole as union type: 'Carry' | 'Mid' | 'Offlane' | 'Support' | 'Hard Support'
+- [x] Define type Position as union type: 1 | 2 | 3 | 4 | 5
+- [x] Create mapping constant ROLE_TO_POSITION mapping HeroRole to Position
 
 ### Draft Types
-- [ ] Create file app/types/draft.ts
-- [ ] Define interface IDraftSlot with properties: hero (IHero | null), role (HeroRole | null), team ('radiant' | 'dire'), position (Position | null)
-- [ ] Define interface IDraftState with properties: radiantPicks (IDraftSlot[]), direPicks (IDraftSlot[]), recommendations (IHero[])
-- [ ] Define interface ITeamComposition with properties: team ('radiant' | 'dire'), slots (IDraftSlot[])
-- [ ] Define type DraftPhase as union type: 'ban' | 'pick' | 'complete'
+- [x] Create file app/types/draft.ts
+- [x] Define interface IDraftSlot with properties: hero (IHero | null), role (HeroRole | null), team ('radiant' | 'dire'), position (Position | null)
+- [x] Define interface IDraftState with properties: radiantPicks (IDraftSlot[]), direPicks (IDraftSlot[]), recommendations (IHero[]), bannedHeroes (IHero[])
+- [x] Define interface ITeamComposition with properties: team ('radiant' | 'dire'), slots (IDraftSlot[])
 
 ### API Response Types
-- [ ] Create file app/types/api.ts
-- [ ] Define interface IOpenDotaHeroResponse matching OpenDota API hero endpoint response structure
-- [ ] Define interface IOpenDotaMatchResponse for match data structure
-- [ ] Define interface IApiError with properties: message (string), code (number), details (any)
-- [ ] Create type guard function isApiError to check if an object is IApiError
+- [x] Create file app/types/api.ts
+- [x] Define interface IOpenDotaHeroResponse matching OpenDota API hero endpoint response structure
+- [x] Define interface IOpenDotaMatchResponse for match data structure
+- [x] Define interface IApiError with properties: message (string), code (number), details (any)
+- [x] Create type guard function isApiError to check if an object is IApiError
 
 ## Phase 3: OpenDota API Integration
 
@@ -123,10 +122,13 @@
 
 ### Hero Grid Component
 - [ ] Create file app/components/ui/HeroGrid.tsx
-- [ ] Define component props: heroes (IHero[]), onHeroSelect (function), selectedHeroes (IHero[])
+- [ ] Define component props: heroes (IHero[]), onHeroSelect (function), selectedHeroes (IHero[]), bannedHeroes (IHero[])
 - [ ] Implement CSS Grid layout with responsive columns
 - [ ] Render HeroPortrait for each hero in heroes array
 - [ ] Add visual indicator for already selected heroes (opacity reduction)
+- [ ] Add different visual indicator for banned heroes (red overlay with X icon)
+- [ ] Disable click handler for banned heroes
+- [ ] Add tooltip for banned heroes saying "This hero has been banned"
 - [ ] Implement virtualization for performance with large hero lists
 - [ ] Add attribute filter buttons (Strength, Agility, Intelligence, Universal)
 - [ ] Create role filter chips for quick filtering
@@ -135,13 +137,16 @@
 
 ### Hero Selection Modal
 - [ ] Create file app/components/draft/HeroSelectionModal.tsx
-- [ ] Define component props: isOpen (boolean), onClose (function), onSelectHero (function), excludedHeroes (IHero[])
+- [ ] Define component props: isOpen (boolean), onClose (function), onSelectHero (function), excludedHeroes (IHero[]), bannedHeroes (IHero[])
 - [ ] Implement modal overlay with semi-transparent background
 - [ ] Create modal container with max-width and centered position
 - [ ] Add modal header with title "Select Hero" and close button
 - [ ] Integrate HeroSearchInput at the top of modal
 - [ ] Add HeroGrid below search input
 - [ ] Implement search functionality that filters hero grid
+- [ ] Filter out both excluded heroes (already picked) and banned heroes from selection
+- [ ] Add visual indicator for banned heroes (red overlay with ban icon)
+- [ ] Disable selection for banned heroes with tooltip explaining they are banned
 - [ ] Add keyboard navigation (Escape to close, Enter to select)
 - [ ] Create smooth open/close animations with CSS transitions
 - [ ] Implement click-outside-to-close functionality
@@ -182,9 +187,23 @@
 - [ ] Add VS divider between teams
 - [ ] Implement Dire team section at the bottom
 - [ ] Add recommendations panel on the right side
+- [ ] Add collapsible banned heroes panel showing list of banned heroes
 - [ ] Create responsive layout for mobile devices
-- [ ] Add draft action buttons (Clear, Save, Share)
+- [ ] Add draft action buttons (Clear Draft, Clear Bans, Save, Share)
 - [ ] Implement keyboard shortcuts display
+
+### Banned Heroes Panel
+- [ ] Create file app/components/draft/BannedHeroesPanel.tsx
+- [ ] Define component props: bannedHeroes (IHero[]), onUnbanHero (function), isCollapsed (boolean), onToggleCollapse (function)
+- [ ] Create collapsible panel with header "Banned Heroes (X)" where X is count
+- [ ] Implement horizontal scrollable list of banned hero portraits
+- [ ] Add small size hero portraits to save space
+- [ ] Include remove button on each banned hero to unban
+- [ ] Add "Clear All Bans" button in panel header
+- [ ] Implement expand/collapse animation
+- [ ] Show placeholder text when no heroes are banned
+- [ ] Add tooltip on each hero showing hero name
+- [ ] Style with subtle red accent to indicate banned status
 
 ## Phase 6: State Management
 
@@ -193,11 +212,16 @@
 - [ ] Define DraftContext with value type IDraftState
 - [ ] Create DraftProvider component with children prop
 - [ ] Implement useState for managing draft state
+- [ ] Implement useState for managing banned heroes list
 - [ ] Create updateSlot function to update specific draft slot
 - [ ] Implement addHero function to add hero to specific slot
 - [ ] Create removeHero function to remove hero from slot
 - [ ] Implement updateRole function to change role for slot
-- [ ] Add clearDraft function to reset all selections
+- [ ] Add banHero function to add hero to banned list
+- [ ] Create unbanHero function to remove hero from banned list
+- [ ] Implement isBanned function to check if hero is banned
+- [ ] Add clearBans function to reset banned heroes list
+- [ ] Add clearDraft function to reset all selections and bans
 - [ ] Create swapSlots function to swap two heroes
 - [ ] Export useDraft custom hook for consuming context
 
@@ -227,26 +251,46 @@
 
 ### Recommendation Component
 - [ ] Create file app/components/draft/RecommendationPanel.tsx
-- [ ] Define component props: recommendations (IHero[]), onSelectRecommendation (function)
+- [ ] Define component props: recommendations (IHero[]), onSelectRecommendation (function), onBanRecommendation (function)
 - [ ] Create panel container with title "Recommended Heroes"
 - [ ] Implement vertical layout for 5 recommendation slots
 - [ ] Add HeroPortrait for each recommended hero
 - [ ] Include role suggestion for each recommendation
+- [ ] Add "X" icon button on each recommendation to mark as banned
+- [ ] Implement hover state showing "X" icon more prominently
+- [ ] Style "X" button with red color on hover
+- [ ] Add tooltip "Mark as banned" for the X button
 - [ ] Add "Refresh" button to get new recommendations
 - [ ] Implement click handler to add recommendation to draft
+- [ ] Add click handler for ban button that calls onBanRecommendation
 - [ ] Add loading state while generating recommendations
 - [ ] Create empty state when no recommendations available
+- [ ] Add visual feedback when hero is marked as banned (fade out animation)
+
+### Recommendation Card Component
+- [ ] Create file app/components/draft/RecommendationCard.tsx
+- [ ] Define component props: hero (IHero), suggestedRole (HeroRole), onSelect (function), onBan (function)
+- [ ] Create card container with hero portrait and controls
+- [ ] Position "X" ban button in top-right corner of card
+- [ ] Add hero name and suggested role below portrait
+- [ ] Implement click handler on portrait for selection
+- [ ] Implement separate click handler on X button for banning
+- [ ] Add hover effects to distinguish between select and ban actions
+- [ ] Create smooth transition when card is removed after banning
 
 ### Random Recommendation Logic
 - [ ] Create file app/lib/recommendations.ts
 - [ ] Implement function getRandomHeroes that returns 5 random heroes
 - [ ] Add logic to exclude already picked heroes from recommendations
+- [ ] Add logic to exclude banned heroes from recommendations
+- [ ] Create function filterAvailableHeroes that excludes both picked and banned heroes
 - [ ] Create function to ensure role diversity in recommendations
 - [ ] Implement weighting based on hero popularity (mock data for v1)
 - [ ] Add function to get heroes for specific role
 - [ ] Create balanced team composition suggester
 - [ ] Implement counter-pick suggestions (random for v1)
 - [ ] Add synergy suggestions (random for v1)
+- [ ] Create function regenerateRecommendations that respects banned list
 
 ## Phase 8: Polish and Styling
 
