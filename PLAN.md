@@ -76,12 +76,12 @@
 - [x] Create function searchHeroes that searches heroes by name (partial match)
 
 ### Data Caching Layer
-- [ ] Create file app/lib/api/cache.ts
-- [ ] Implement in-memory cache for hero data using Map
-- [ ] Create function getCachedHeroes that returns cached data if available and not expired
-- [ ] Implement function setCachedHeroes that stores hero data with timestamp
-- [ ] Create cache invalidation function clearHeroCache
-- [ ] Add cache warming function that pre-fetches hero data on app start
+- [x] Create file app/lib/api/cache.ts
+- [x] Implement in-memory cache for hero data using Map
+- [x] Create function getCachedHeroes that returns cached data if available and not expired
+- [x] Implement function setCachedHeroes that stores hero data with timestamp
+- [x] Create cache invalidation function clearHeroCache
+- [x] Add cache warming function that pre-fetches hero data on app start
 
 ## Phase 4: Core UI Components
 
