@@ -136,21 +136,21 @@
 - [x] Implement smooth scroll to top when filters change
 
 ### Hero Selection Modal
-- [ ] Create file app/components/draft/HeroSelectionModal.tsx
-- [ ] Define component props: isOpen (boolean), onClose (function), onSelectHero (function), excludedHeroes (IHero[]), bannedHeroes (IHero[])
-- [ ] Implement modal overlay with semi-transparent background
-- [ ] Create modal container with max-width and centered position
-- [ ] Add modal header with title "Select Hero" and close button
-- [ ] Integrate HeroSearchInput at the top of modal
-- [ ] Add HeroGrid below search input
-- [ ] Implement search functionality that filters hero grid
-- [ ] Filter out both excluded heroes (already picked) and banned heroes from selection
-- [ ] Add visual indicator for banned heroes (red overlay with ban icon)
-- [ ] Disable selection for banned heroes with tooltip explaining they are banned
-- [ ] Add keyboard navigation (Escape to close, Enter to select)
-- [ ] Create smooth open/close animations with CSS transitions
-- [ ] Implement click-outside-to-close functionality
-- [ ] Add loading state while heroes are being fetched
+- [x] Create file app/components/draft/HeroSelectionModal.tsx
+- [x] Define component props: isOpen (boolean), onClose (function), onSelectHero (function), excludedHeroes (IHero[]), bannedHeroes (IHero[])
+- [x] Implement modal overlay with semi-transparent background
+- [x] Create modal container with max-width and centered position
+- [x] Add modal header with title "Select Hero" and close button
+- [x] Integrate HeroSearchInput at the top of modal
+- [x] Add HeroGrid below search input
+- [x] Implement search functionality that filters hero grid
+- [x] Filter out both excluded heroes (already picked) and banned heroes from selection
+- [x] Add visual indicator for banned heroes (red overlay with ban icon)
+- [x] Disable selection for banned heroes with tooltip explaining they are banned
+- [x] Add keyboard navigation (Escape to close, Enter to select)
+- [x] Create smooth open/close animations with CSS transitions
+- [x] Implement click-outside-to-close functionality
+- [x] Add loading state while heroes are being fetched
 
 ## Phase 5: Draft Interface Implementation
 
