@@ -17,7 +17,7 @@ export default function HeroSearchInput({
   isLoading = false
 }: HeroSearchInputProps) {
   const [localValue, setLocalValue] = useState(value);
-  const debounceTimeoutRef = useRef<NodeJS.Timeout>();
+  const debounceTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const debouncedOnChange = useCallback((newValue: string) => {

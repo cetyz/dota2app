@@ -121,19 +121,19 @@
 - [x] Create loading spinner for search in progress
 
 ### Hero Grid Component
-- [ ] Create file app/components/ui/HeroGrid.tsx
-- [ ] Define component props: heroes (IHero[]), onHeroSelect (function), selectedHeroes (IHero[]), bannedHeroes (IHero[])
-- [ ] Implement CSS Grid layout with responsive columns
-- [ ] Render HeroPortrait for each hero in heroes array
-- [ ] Add visual indicator for already selected heroes (opacity reduction)
-- [ ] Add different visual indicator for banned heroes (red overlay with X icon)
-- [ ] Disable click handler for banned heroes
-- [ ] Add tooltip for banned heroes saying "This hero has been banned"
-- [ ] Implement virtualization for performance with large hero lists
-- [ ] Add attribute filter buttons (Strength, Agility, Intelligence, Universal)
-- [ ] Create role filter chips for quick filtering
-- [ ] Add "Show All" button to clear filters
-- [ ] Implement smooth scroll to top when filters change
+- [x] Create file app/components/ui/HeroGrid.tsx
+- [x] Define component props: heroes (IHero[]), onHeroSelect (function), selectedHeroes (IHero[]), bannedHeroes (IHero[])
+- [x] Implement CSS Grid layout with responsive columns
+- [x] Render HeroPortrait for each hero in heroes array
+- [x] Add visual indicator for already selected heroes (opacity reduction)
+- [x] Add different visual indicator for banned heroes (red overlay with X icon)
+- [x] Disable click handler for banned heroes
+- [x] Add tooltip for banned heroes saying "This hero has been banned"
+- [x] Implement virtualization for performance with large hero lists
+- [x] Add attribute filter buttons (Strength, Agility, Intelligence, Universal)
+- [x] Create role filter chips for quick filtering
+- [x] Add "Show All" button to clear filters
+- [x] Implement smooth scroll to top when filters change
 
 ### Hero Selection Modal
 - [ ] Create file app/components/draft/HeroSelectionModal.tsx

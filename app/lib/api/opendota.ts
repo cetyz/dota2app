@@ -127,7 +127,12 @@ async function fetchAllHeroesUncached(): Promise<IHero[]> {
   }
 }
 
-export const fetchAllHeroes = unstable_cache(
+// For client-side usage, we'll export the uncached version
+// and handle caching at the component level or use the cache.ts utilities
+export const fetchAllHeroes = fetchAllHeroesUncached;
+
+// For server-side usage with Next.js caching
+export const fetchAllHeroesCached = unstable_cache(
   fetchAllHeroesUncached,
   ['heroes'],
   { revalidate: 3600 }
@@ -151,7 +156,11 @@ async function fetchHeroStatsUncached(): Promise<IOpenDotaHeroResponse[]> {
   }
 }
 
-export const fetchHeroStats = unstable_cache(
+// For client-side usage, we'll export the uncached version
+export const fetchHeroStats = fetchHeroStatsUncached;
+
+// For server-side usage with Next.js caching
+export const fetchHeroStatsCached = unstable_cache(
   fetchHeroStatsUncached,
   ['heroStats'],
   { revalidate: 3600 }
