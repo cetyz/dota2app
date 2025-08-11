@@ -229,16 +229,13 @@
 - [x] Position prominently near the top of the draft interface
 
 ### Team Draft Section
-- [ ] Create file app/components/draft/TeamDraftSection.tsx
-- [ ] Define component props: teamLabel ('My Team' | 'Enemy Team'), slots (IDraftSlot[]), onSlotUpdate (function), teamSide (TeamSide | null)
-- [ ] Create team header with team label ("My Team" or "Enemy Team")
-- [ ] Add subtitle showing actual team side when teamLabel is "My Team" (e.g., "My Team (Radiant)")
-- [ ] Implement horizontal layout for 5 draft slots
-- [ ] Add appropriate background tint based on actual team side (green for Radiant, red for Dire)
-- [ ] Create responsive layout that stacks on mobile
-- [ ] Add team label with custom font styling
-- [ ] Implement animation when heroes are added
-- [ ] Add visual emphasis for "My Team" section (slightly brighter or bordered)
+- [x] Create file app/components/draft/TeamDraftSection.tsx
+- [x] Define component props: teamLabel ('My Team' | 'Enemy Team'), slots (IDraftSlot[]), onSlotUpdate (function), teamSide (TeamSide | null)
+- [x] Create team header with team label ("My Team" or "Enemy Team")
+- [x] Add subtitle showing actual team side when teamLabel is "My Team" (e.g., "My Team (Radiant)")
+- [x] Implement horizontal layout for 5 draft slots
+- [x] Create responsive layout that stacks on mobile
+- [x] Implement animation when heroes are added
 
 ### Main Draft Layout
 - [ ] Create file app/components/draft/DraftLayout.tsx
