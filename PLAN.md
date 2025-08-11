@@ -106,18 +106,18 @@
 - [x] Add disabled state styling when hero is already picked
 
 ### Hero Portrait Component v2
-- [ ] Create file app/components/ui/HeroPortrait.tsx
-- [ ] Define component props: hero (IHero | null), onClick (function), isSelected (boolean), isBanned (boolean), size ('small' | 'medium' | 'large')
-- [ ] Implement conditional rendering for empty state (show placeholder when hero is null)
-- [ ] Add Next.js Image component for hero portrait with proper sizing
-- [ ] Implement hover effect with scale transform and border highlight
-- [ ] Add selected state styling with accent color border
-- [ ] Add banned state styling with red overlay and X icon
-- [ ] Create loading skeleton state for when image is loading
-- [ ] Add hero name tooltip on hover
-- [ ] Implement click handler that calls onClick prop with hero data
-- [ ] Disable click handler when hero is banned
-- [ ] Add disabled state styling when hero is already picked or banned
+- [x] Create file app/components/ui/HeroPortrait.tsx
+- [x] Define component props: hero (IHero | null), onClick (function), isSelected (boolean), isBanned (boolean), size ('small' | 'medium' | 'large')
+- [x] Implement conditional rendering for empty state (show placeholder when hero is null)
+- [x] Add Next.js Image component for hero portrait with proper sizing
+- [x] Implement hover effect with scale transform and border highlight
+- [x] Add selected state styling with accent color border
+- [x] Add banned state styling with red overlay and X icon
+- [x] Create loading skeleton state for when image is loading
+- [x] Add hero name tooltip on hover
+- [x] Implement click handler that calls onClick prop with hero data
+- [x] Disable click handler when hero is banned
+- [x] Add disabled state styling when hero is already picked or banned
 
 ### Role Selector Component
 - [x] Create file app/components/ui/RoleSelector.tsx

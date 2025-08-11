@@ -7,16 +7,16 @@ export interface HeroPortraitProps {
   hero: IHero | null;
   onClick?: (hero: IHero) => void;
   isSelected?: boolean;
+  isBanned?: boolean;
   size?: 'small' | 'medium' | 'large';
-  disabled?: boolean;
 }
 
 export default function HeroPortrait({
   hero,
   onClick,
   isSelected = false,
-  size = 'medium',
-  disabled = false
+  isBanned = false,
+  size = 'medium'
 }: HeroPortraitProps) {
   // Dota 2 hero portraits are typically 16:9 aspect ratio (256x144px original)
   const sizeConfig = {
@@ -28,7 +28,7 @@ export default function HeroPortrait({
   const currentSize = sizeConfig[size];
 
   const handleClick = () => {
-    if (hero && onClick && !disabled) {
+    if (hero && onClick && !isBanned) {
       onClick(hero);
     }
   };
@@ -54,21 +54,23 @@ export default function HeroPortrait({
     <div
       className={`
         ${currentSize.class}
-        relative rounded-lg overflow-hidden cursor-pointer
+        relative rounded-lg overflow-hidden
         border-2 transition-all duration-300 ease-out
         flex-shrink-0
         ${isSelected 
           ? 'border-accentPrimary shadow-lg shadow-accentPrimary/50' 
+          : isBanned
+          ? 'border-red-600 shadow-lg shadow-red-500/50'
           : 'border-gray-600'
         }
-        ${disabled 
-          ? 'opacity-50 cursor-not-allowed' 
-          : 'hover:scale-110 hover:border-textLight hover:shadow-xl hover:shadow-black/50 hover:z-10 transform-gpu'
+        ${isBanned 
+          ? 'opacity-75 cursor-not-allowed' 
+          : 'cursor-pointer hover:scale-110 hover:border-textLight hover:shadow-xl hover:shadow-black/50 hover:z-10 transform-gpu'
         }
         group
       `}
       onClick={handleClick}
-      title={hero.localized_name}
+      title={isBanned ? `${hero.localized_name} (Banned)` : hero.localized_name}
     >
       <Image
         src={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.name.replace('npc_dota_hero_', '')}.png`}
@@ -79,9 +81,9 @@ export default function HeroPortrait({
         sizes={`${currentSize.width}px`}
       />
       
-      {disabled && (
-        <div className="absolute inset-0 bg-black/60 flex items-center justify-center rounded-lg">
-          <span className="text-red-500 text-lg font-bold">✕</span>
+      {isBanned && (
+        <div className="absolute inset-0 bg-red-600/80 flex items-center justify-center rounded-lg">
+          <span className="text-white text-lg font-bold drop-shadow-lg">✕</span>
         </div>
       )}
 
