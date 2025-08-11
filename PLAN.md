@@ -110,15 +110,15 @@
 - [x] Add aria-label for accessibility
 
 ### Hero Search Input
-- [ ] Create file app/components/ui/HeroSearchInput.tsx
-- [ ] Define component props: value (string), onChange (function), placeholder (string)
-- [ ] Implement text input with search icon
-- [ ] Add debouncing to onChange handler (300ms delay)
-- [ ] Style with dark background and light text
-- [ ] Add clear button when input has value
-- [ ] Implement focus state with accent color border
-- [ ] Add keyboard navigation support (Escape to clear)
-- [ ] Create loading spinner for search in progress
+- [x] Create file app/components/ui/HeroSearchInput.tsx
+- [x] Define component props: value (string), onChange (function), placeholder (string)
+- [x] Implement text input with search icon
+- [x] Add debouncing to onChange handler (300ms delay)
+- [x] Style with dark background and light text
+- [x] Add clear button when input has value
+- [x] Implement focus state with accent color border
+- [x] Add keyboard navigation support (Escape to clear)
+- [x] Create loading spinner for search in progress
 
 ### Hero Grid Component
 - [ ] Create file app/components/ui/HeroGrid.tsx
