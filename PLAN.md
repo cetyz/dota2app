@@ -199,37 +199,62 @@
 - [x] Create container div with border and padding
 - [x] Integrate HeroPortrait component for hero display
 - [x] Add RoleSelector component below hero portrait
-- [x] Display position number (1-5) in corner
 - [x] Implement empty state with "+" icon to add hero
-- [x] Add team color indicator (green for Radiant, red for Dire)
 - [x] Create hover effect to show edit options
 - [x] Add remove hero button (X icon) on hover
-- [x] Implement slot highlighting when active
+
+### Draft Slot Component v2
+- [x] Create file app/components/draft/DraftSlot.tsx
+- [x] Define component props: slot (IDraftSlot), onHeroClick (function), onRoleChange (function), slotIndex (number), teamType ('my' | 'enemy')
+- [x] Create container div with border and padding
+- [x] Integrate HeroPortrait component for hero display
+- [x] Add RoleSelector component below hero portrait (only for "my" team slots)
+- [x] Hide RoleSelector for enemy team slots
+- [x] Implement empty state with "+" icon to add hero
+- [x] Create hover effect to show edit options
+- [x] Add remove hero button (X icon) on hover
+- [x] Add different interaction behavior for my team vs enemy team slots
+
+### Team Selector Component
+- [ ] Create file app/components/draft/TeamSelector.tsx
+- [ ] Define component props: value (TeamSide), onChange (function)
+- [ ] Implement toggle button group with Radiant and Dire options
+- [ ] Style with team colors (green for Radiant, red for Dire)
+- [ ] Add icons or logos for each team side
+- [ ] Implement controlled component with value and onChange
+- [ ] Add hover states with appropriate team colors
+- [ ] Create smooth transition animation when switching teams
+- [ ] Add aria-label "Select your team side"
+- [ ] Position prominently near the top of the draft interface
 
 ### Team Draft Section
 - [ ] Create file app/components/draft/TeamDraftSection.tsx
-- [ ] Define component props: team ('radiant' | 'dire'), slots (IDraftSlot[]), onSlotUpdate (function)
-- [ ] Create team header with team name and styling
+- [ ] Define component props: teamLabel ('My Team' | 'Enemy Team'), slots (IDraftSlot[]), onSlotUpdate (function), teamSide (TeamSide | null)
+- [ ] Create team header with team label ("My Team" or "Enemy Team")
+- [ ] Add subtitle showing actual team side when teamLabel is "My Team" (e.g., "My Team (Radiant)")
 - [ ] Implement horizontal layout for 5 draft slots
-- [ ] Add team-specific background color (subtle green/red tint)
+- [ ] Add appropriate background tint based on actual team side (green for Radiant, red for Dire)
 - [ ] Create responsive layout that stacks on mobile
 - [ ] Add team label with custom font styling
 - [ ] Implement animation when heroes are added
-- [ ] Add visual separator between teams
+- [ ] Add visual emphasis for "My Team" section (slightly brighter or bordered)
 
 ### Main Draft Layout
 - [ ] Create file app/components/draft/DraftLayout.tsx
 - [ ] Define component props: draftState (IDraftState), onDraftUpdate (function)
 - [ ] Create main container with full height and dark background
-- [ ] Add title "Dota 2 Draft Tool" at the top
-- [ ] Implement Radiant team section at the top
+- [ ] Add title "Dota 2 Draft Tool - All Pick Mode" at the top
+- [ ] Add TeamSelector component below title for choosing Radiant or Dire
+- [ ] Implement "My Team" section at the top (5 slots)
 - [ ] Add VS divider between teams
-- [ ] Implement Dire team section at the bottom
-- [ ] Add recommendations panel on the right side
+- [ ] Implement "Enemy Team" section at the bottom (5 slots)
+- [ ] Apply appropriate team colors based on myTeamSide selection
+- [ ] Add recommendations panel on the right side labeled "Recommendations"
 - [ ] Add collapsible banned heroes panel showing list of banned heroes
 - [ ] Create responsive layout for mobile devices
 - [ ] Add draft action buttons (Clear Draft, Clear Bans, Save, Share)
 - [ ] Implement keyboard shortcuts display
+- [ ] Add info text showing which side user is playing (e.g., "Playing as: Radiant")
 
 ### Banned Heroes Panel
 - [ ] Create file app/components/draft/BannedHeroesPanel.tsx
@@ -246,22 +271,42 @@
 
 ## Phase 6: State Management
 
+### Initial App State and Flow
+- [ ] Create file app/hooks/useInitialRecommendations.ts
+- [ ] Implement hook that generates recommendations on app load
+- [ ] Trigger initial recommendations when user selects team side
+- [ ] Generate team-specific recommendations (Radiant-favored or Dire-favored heroes)
+- [ ] Update recommendations automatically when any hero is added to either team
+- [ ] Create smooth transition animation when recommendations update
+- [ ] Implement loading state for initial recommendation generation
+- [ ] Add persistence of team side selection in localStorage
+- [ ] Auto-select previously used team side on app reload
+- [ ] Generate initial 5 recommendations before any heroes are picked
+- [ ] Ensure recommendations are always visible and updating throughout draft
+
 ### Draft Context
 - [ ] Create file app/contexts/DraftContext.tsx
 - [ ] Define DraftContext with value type IDraftState
 - [ ] Create DraftProvider component with children prop
 - [ ] Implement useState for managing draft state
 - [ ] Implement useState for managing banned heroes list
-- [ ] Create updateSlot function to update specific draft slot
-- [ ] Implement addHero function to add hero to specific slot
-- [ ] Create removeHero function to remove hero from slot
+- [ ] Implement useState for managing myTeamSide (radiant/dire)
+- [ ] Create setMyTeamSide function to update which team user is on
+- [ ] Create updateMyTeamSlot function to update specific slot in my team
+- [ ] Create updateEnemyTeamSlot function to update specific slot in enemy team
+- [ ] Implement addHeroToMyTeam function to add hero to my team
+- [ ] Implement addHeroToEnemyTeam function to add hero to enemy team
+- [ ] Create removeHeroFromMyTeam function
+- [ ] Create removeHeroFromEnemyTeam function
 - [ ] Implement updateRole function to change role for slot
 - [ ] Add banHero function to add hero to banned list
 - [ ] Create unbanHero function to remove hero from banned list
 - [ ] Implement isBanned function to check if hero is banned
 - [ ] Add clearBans function to reset banned heroes list
 - [ ] Add clearDraft function to reset all selections and bans
-- [ ] Create swapSlots function to swap two heroes
+- [ ] Create swapSlots function to swap two heroes within same team
+- [ ] Implement getAllPickedHeroes function to get all heroes from both teams
+- [ ] Create getRecommendationContext function that returns current state for recommendation engine
 - [ ] Export useDraft custom hook for consuming context
 
 ### Hero Data Context
@@ -281,17 +326,22 @@
 - [ ] Add JSON serialization and deserialization
 - [ ] Implement error handling for localStorage access
 - [ ] Create draft auto-save functionality using useLocalStorage
+- [ ] Include myTeam, enemyTeam, myTeamSide, and banned heroes in saved draft data
 - [ ] Add debouncing to prevent excessive writes
 - [ ] Implement draft history with max 5 saved drafts
-- [ ] Create function to load saved draft
+- [ ] Create function to load saved draft including team side and banned heroes
 - [ ] Add function to delete saved draft
+- [ ] Create separate storage key for persistent banned list across drafts
+- [ ] Implement option to carry over bans to new draft
+- [ ] Add storage for user's preferred team side (Radiant/Dire)
 
-## Phase 7: Recommendation System (v1 - Random)
+## Phase 7: Recommendation System (v1 - Team-Aware)
 
 ### Recommendation Component
 - [ ] Create file app/components/draft/RecommendationPanel.tsx
-- [ ] Define component props: recommendations (IHero[]), onSelectRecommendation (function), onBanRecommendation (function)
+- [ ] Define component props: recommendations (IHero[]), onSelectRecommendation (function), onBanRecommendation (function), myTeamSide (TeamSide)
 - [ ] Create panel container with title "Recommended Heroes"
+- [ ] Add subtle indicator showing recommendations are for your team
 - [ ] Implement vertical layout for 5 recommendation slots
 - [ ] Add HeroPortrait for each recommended hero
 - [ ] Include role suggestion for each recommendation
@@ -317,19 +367,34 @@
 - [ ] Add hover effects to distinguish between select and ban actions
 - [ ] Create smooth transition when card is removed after banning
 
-### Random Recommendation Logic
+### Team-Aware Recommendation Logic
 - [ ] Create file app/lib/recommendations.ts
-- [ ] Implement function getRandomHeroes that returns 5 random heroes
-- [ ] Add logic to exclude already picked heroes from recommendations
-- [ ] Add logic to exclude banned heroes from recommendations
-- [ ] Create function filterAvailableHeroes that excludes both picked and banned heroes
-- [ ] Create function to ensure role diversity in recommendations
-- [ ] Implement weighting based on hero popularity (mock data for v1)
-- [ ] Add function to get heroes for specific role
-- [ ] Create balanced team composition suggester
-- [ ] Implement counter-pick suggestions (random for v1)
-- [ ] Add synergy suggestions (random for v1)
-- [ ] Create function regenerateRecommendations that respects banned list
+- [ ] Define interface IRecommendationEngine with methods for generating recommendations
+- [ ] Implement function generateRecommendations that takes recommendation context
+- [ ] Create function getRadiantFavoredHeroes that returns heroes with Radiant advantage
+- [ ] Create function getDireFavoredHeroes that returns heroes with Dire advantage
+- [ ] Implement function filterAvailableHeroes that excludes picked and banned heroes
+- [ ] Create function analyzeTeamComposition that evaluates current team strengths/weaknesses
+- [ ] Implement function findSynergies that identifies heroes that work well with current picks
+- [ ] Create function findCounters that suggests heroes good against enemy picks
+- [ ] Add function calculateHeroScore that weights heroes based on multiple factors
+- [ ] Implement function getTopRecommendations that returns best 5 heroes
+- [ ] Create function suggestRoleForHero based on team's current composition
+- [ ] Add function updateRecommendations that triggers on any draft state change
+- [ ] Implement caching to avoid recalculating when state hasn't changed
+- [ ] Create mock data for team advantages (to be replaced with real data later)
+- [ ] Add mock synergy matrix for hero combinations
+- [ ] Create mock counter-pick relationships
+
+### Recommendation State Management
+- [ ] Create file app/hooks/useRecommendations.ts
+- [ ] Implement custom hook that watches draft state changes
+- [ ] Add useEffect that triggers recommendation updates
+- [ ] Create debouncing to avoid excessive recalculation
+- [ ] Implement memoization for recommendation results
+- [ ] Add loading state management for async recommendations
+- [ ] Create error handling for recommendation generation failures
+- [ ] Export hook for use in recommendation panel
 
 ## Phase 8: Polish and Styling
 
@@ -395,9 +460,13 @@
 - [ ] Create file app/components/ui/Toast.tsx
 - [ ] Implement toast notification system
 - [ ] Add success message for hero selection
+- [ ] Add success message for hero ban "Hero banned successfully"
+- [ ] Add success message for hero unban "Hero unbanned"
 - [ ] Create error toast for failed API calls
 - [ ] Implement warning for duplicate selections
+- [ ] Add warning toast if trying to select a banned hero
 - [ ] Add info toast for tips and hints
+- [ ] Create confirmation toast when clearing all bans
 
 ### Accessibility
 - [ ] Add proper ARIA labels to all interactive elements
@@ -422,12 +491,16 @@
 
 ### Database Schema
 - [ ] Create users table with id, email, username, created_at
-- [ ] Create drafts table with id, user_id, radiant_picks, dire_picks, created_at, updated_at
+- [ ] Create drafts table with id, user_id, my_team_picks, enemy_team_picks, my_team_side, banned_heroes, created_at, updated_at
 - [ ] Create draft_collaborators table for shared drafts
 - [ ] Add foreign key constraints between tables
 - [ ] Create indexes for frequently queried columns
 - [ ] Set up database triggers for updated_at timestamp
 - [ ] Create views for commonly accessed data combinations
+- [ ] Add my_team_picks as JSONB column to store array of hero objects with roles
+- [ ] Add enemy_team_picks as JSONB column to store array of hero objects
+- [ ] Add my_team_side as ENUM type with values 'radiant' and 'dire'
+- [ ] Add banned_heroes as JSONB column to store array of banned hero IDs
 
 ### Authentication Components
 - [ ] Create file app/components/auth/LoginForm.tsx
@@ -443,12 +516,16 @@
 ### Draft Persistence
 - [ ] Create file app/lib/supabase/drafts.ts
 - [ ] Implement saveDraft function to store draft in database
+- [ ] Save myTeam, enemyTeam, myTeamSide, and bannedHeroes
 - [ ] Create loadDraft function to retrieve draft by ID
 - [ ] Add updateDraft function for existing drafts
 - [ ] Implement deleteDraft function
 - [ ] Create getUserDrafts function to list user's drafts
 - [ ] Add draft sharing functionality with unique URLs
 - [ ] Implement draft versioning system
+- [ ] Create function to export draft as shareable text/image
+- [ ] Add import function to load draft from text format
+- [ ] Implement draft templates for common strategies
 
 ### Real-time Collaboration
 - [ ] Create file app/lib/supabase/realtime.ts
@@ -459,6 +536,11 @@
 - [ ] Implement conflict resolution for simultaneous edits
 - [ ] Create "user is typing" indicators
 - [ ] Add connection status indicator
+- [ ] Sync team side selection across collaborators
+- [ ] Handle concurrent updates to my team and enemy team
+- [ ] Implement role assignment sync for team coordination
+- [ ] Create notification when collaborator adds/removes heroes
+- [ ] Add visual indicator showing which user made which pick
 
 ## Phase 11: Deployment to Google Cloud
 
@@ -509,9 +591,23 @@
 ## Phase 12: Final Testing and Launch
 
 ### End-to-End Testing
+- [ ] Test team side selection (Radiant/Dire toggle)
+- [ ] Verify "My Team" always appears on top regardless of side selection
+- [ ] Test that recommendations update when team side is changed
+- [ ] Verify recommendations are generated immediately at start before any picks
+- [ ] Test that recommendations update after each hero pick (ally or enemy)
+- [ ] Verify recommendations consider both ally synergies and enemy counters
 - [ ] Test complete draft flow from start to finish
 - [ ] Verify hero selection and role assignment works
-- [ ] Test recommendation system functionality
+- [ ] Test banning heroes from recommendations with X button
+- [ ] Verify banned heroes don't appear in future recommendations
+- [ ] Test that banned heroes are visually indicated in hero selection modal
+- [ ] Verify unbanning heroes from banned heroes panel works
+- [ ] Test that Clear Bans button removes all banned heroes
+- [ ] Verify banned heroes persist in local storage
+- [ ] Test recommendation system excludes both picked and banned heroes
+- [ ] Verify team colors update correctly based on side selection
+- [ ] Test that draft state correctly tracks my team vs enemy team
 - [ ] Verify responsive design on multiple devices
 - [ ] Test offline functionality with service worker
 - [ ] Verify error handling for API failures
@@ -522,10 +618,18 @@
 - [ ] Create README.md with setup instructions
 - [ ] Document API endpoints and data structures
 - [ ] Create user guide for draft tool features
+- [ ] Document the team selection and recommendation flow
+- [ ] Explain that "My Team" is always on top, "Enemy Team" on bottom
+- [ ] Document how recommendations update dynamically based on all picks
+- [ ] Explain team-side advantages (Radiant vs Dire) in recommendations
+- [ ] Document how to use the ban system for recommendations
+- [ ] Explain the difference between picked and banned heroes
 - [ ] Document deployment process
 - [ ] Add contributing guidelines
 - [ ] Create architecture diagram
 - [ ] Document known issues and limitations
+- [ ] Add FAQ section about All Pick drafting mode
+- [ ] Include guide on optimal drafting flow (select side → pick heroes → track enemy picks)
 
 ### Launch Checklist
 - [ ] Verify all environment variables are set

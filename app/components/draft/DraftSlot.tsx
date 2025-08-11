@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IDraftSlot, TeamSide } from '@/app/types/draft';
+import { IDraftSlot } from '@/app/types/draft';
 import { HeroRole } from '@/app/types/hero';
 import HeroPortrait from '@/app/components/ui/HeroPortrait';
 import RoleSelector from '@/app/components/ui/RoleSelector';
@@ -11,7 +11,7 @@ interface DraftSlotProps {
   onHeroClick: () => void;
   onRoleChange: (role: HeroRole | null) => void;
   slotIndex: number;
-  team: TeamSide;
+  teamType: 'my' | 'enemy';
   isActive?: boolean;
 }
 
@@ -20,27 +20,15 @@ export default function DraftSlot({
   onHeroClick,
   onRoleChange,
   slotIndex,
-  team,
+  teamType,
   isActive = false
 }: DraftSlotProps) {
   const [showEditOptions, setShowEditOptions] = React.useState(false);
 
-  const teamColorClasses = {
-    radiant: {
-      border: 'border-textSecondary/60',
-      background: 'bg-textSecondary/10',
-      activeBorder: 'border-accentPrimary',
-      indicator: 'bg-accentPrimary'
-    },
-    dire: {
-      border: 'border-textSecondary/60', 
-      background: 'bg-textSecondary/10',
-      activeBorder: 'border-accentPrimary',
-      indicator: 'bg-accentPrimary'
-    }
+  const colorScheme = {
+    border: 'border-textSecondary/60',
+    background: 'bg-textSecondary/10'
   };
-
-  const colorScheme = teamColorClasses[team];
 
   const handleRemoveHero = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -54,9 +42,8 @@ export default function DraftSlot({
     <div
       className={`
         relative p-4 rounded-lg border-2 transition-all duration-300
-        ${colorScheme.background}
-        ${isActive && !slot.hero ? colorScheme.activeBorder : colorScheme.border}
-        ${isActive && !slot.hero ? 'shadow-lg shadow-textSecondary/50' : 'hover:shadow-xl hover:shadow-textSecondary/40'}
+        ${colorScheme.background} ${colorScheme.border}
+        hover:shadow-xl hover:shadow-textSecondary/40
         hover:brightness-110 hover:border-textSecondary
         group
       `}
@@ -92,14 +79,16 @@ export default function DraftSlot({
           )}
         </div>
 
-        {/* Role Selector */}
-        <div className="w-full">
-          <RoleSelector
-            value={slot.role}
-            onChange={onRoleChange}
-            disabled={false}
-          />
-        </div>
+        {/* Role Selector - Only show for "my" team slots */}
+        {teamType === 'my' && (
+          <div className="w-full">
+            <RoleSelector
+              value={slot.role}
+              onChange={onRoleChange}
+              disabled={false}
+            />
+          </div>
+        )}
 
         {/* Hero name if selected */}
         {slot.hero && (
