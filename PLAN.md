@@ -218,6 +218,7 @@
 ### Team Selector Component
 - [ ] Create file app/components/draft/TeamSelector.tsx
 - [ ] Define component props: value (TeamSide), onChange (function)
+- [ ] Ensure previously created components take this TeamSide variable into account
 - [ ] Implement toggle button group with Radiant and Dire options
 - [ ] Style with team colors (green for Radiant, red for Dire)
 - [ ] Add icons or logos for each team side
