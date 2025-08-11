@@ -98,16 +98,16 @@
 - [x] Add disabled state styling when hero is already picked
 
 ### Role Selector Component
-- [ ] Create file app/components/ui/RoleSelector.tsx
-- [ ] Define component props: value (HeroRole | null), onChange (function), disabled (boolean)
-- [ ] Create dropdown using native select element styled with Tailwind
-- [ ] Add options for all 5 roles: Carry, Mid, Offlane, Support, Hard Support
-- [ ] Implement controlled component pattern with value and onChange
-- [ ] Add default "Select Role" placeholder option
-- [ ] Style dropdown with dark theme matching color palette
-- [ ] Add hover and focus states with accent color
-- [ ] Implement disabled state styling
-- [ ] Add aria-label for accessibility
+- [x] Create file app/components/ui/RoleSelector.tsx
+- [x] Define component props: value (HeroRole | null), onChange (function), disabled (boolean)
+- [x] Create dropdown using native select element styled with Tailwind
+- [x] Add options for all 5 roles: Carry, Mid, Offlane, Support, Hard Support
+- [x] Implement controlled component pattern with value and onChange
+- [x] Add default "Select Role" placeholder option
+- [x] Style dropdown with dark theme matching color palette
+- [x] Add hover and focus states with accent color
+- [x] Implement disabled state styling
+- [x] Add aria-label for accessibility
 
 ### Hero Search Input
 - [ ] Create file app/components/ui/HeroSearchInput.tsx
