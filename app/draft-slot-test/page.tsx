@@ -107,19 +107,19 @@ const mockHeroes: IHero[] = [
 
 export default function DraftSlotTestPage() {
   const [radiantSlots, setRadiantSlots] = useState<IDraftSlot[]>([
-    { hero: null, role: null, team: 'radiant', position: 1 },
-    { hero: mockHeroes[0], role: 'Carry', team: 'radiant', position: 2 },
-    { hero: null, role: 'Mid', team: 'radiant', position: 3 },
-    { hero: mockHeroes[2], role: null, team: 'radiant', position: 4 },
-    { hero: null, role: null, team: 'radiant', position: 5 }
+    { hero: null, role: null, position: 1 },
+    { hero: mockHeroes[0], role: 'Carry', position: 2 },
+    { hero: null, role: 'Mid', position: 3 },
+    { hero: mockHeroes[2], role: null, position: 4 },
+    { hero: null, role: null, position: 5 }
   ]);
 
   const [direSlots, setDireSlots] = useState<IDraftSlot[]>([
-    { hero: mockHeroes[1], role: 'Support', team: 'dire', position: 1 },
-    { hero: null, role: null, team: 'dire', position: 2 },
-    { hero: mockHeroes[4], role: 'Offlane', team: 'dire', position: 3 },
-    { hero: null, role: 'Hard Support', team: 'dire', position: 4 },
-    { hero: mockHeroes[3], role: null, team: 'dire', position: 5 }
+    { hero: mockHeroes[1], role: 'Support', position: 1 },
+    { hero: null, role: null, position: 2 },
+    { hero: mockHeroes[4], role: 'Offlane', position: 3 },
+    { hero: null, role: 'Hard Support', position: 4 },
+    { hero: mockHeroes[3], role: null, position: 5 }
   ]);
 
   const [activeSlot, setActiveSlot] = useState<string | null>(null);
@@ -236,6 +236,7 @@ export default function DraftSlotTestPage() {
                 <DraftSlot
                   slot={slot}
                   slotIndex={index}
+                  team="radiant"
                   onHeroClick={() => handleHeroClick('radiant', index)}
                   onRoleChange={(role) => updateRadiantSlot(index, role)}
                   isActive={activeSlot === `radiant-${index}`}
@@ -282,6 +283,7 @@ export default function DraftSlotTestPage() {
                 <DraftSlot
                   slot={slot}
                   slotIndex={index}
+                  team="dire"
                   onHeroClick={() => handleHeroClick('dire', index)}
                   onRoleChange={(role) => updateDireSlot(index, role)}
                   isActive={activeSlot === `dire-${index}`}

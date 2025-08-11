@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { IDraftSlot } from '@/app/types/draft';
+import { IDraftSlot, TeamSide } from '@/app/types/draft';
 import { HeroRole } from '@/app/types/hero';
 import HeroPortrait from '@/app/components/ui/HeroPortrait';
 import RoleSelector from '@/app/components/ui/RoleSelector';
@@ -11,6 +11,7 @@ interface DraftSlotProps {
   onHeroClick: () => void;
   onRoleChange: (role: HeroRole | null) => void;
   slotIndex: number;
+  team: TeamSide;
   isActive?: boolean;
 }
 
@@ -19,6 +20,7 @@ export default function DraftSlot({
   onHeroClick,
   onRoleChange,
   slotIndex,
+  team,
   isActive = false
 }: DraftSlotProps) {
   const [showEditOptions, setShowEditOptions] = React.useState(false);
@@ -38,8 +40,7 @@ export default function DraftSlot({
     }
   };
 
-  const colorScheme = teamColorClasses[slot.team];
-  const position = slot.position || slotIndex + 1;
+  const colorScheme = teamColorClasses[team];
 
   const handleRemoveHero = (e: React.MouseEvent) => {
     e.stopPropagation();

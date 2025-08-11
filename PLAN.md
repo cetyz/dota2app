@@ -49,6 +49,14 @@
 - [x] Define interface IDraftState with properties: radiantPicks (IDraftSlot[]), direPicks (IDraftSlot[]), recommendations (IHero[]), bannedHeroes (IHero[])
 - [x] Define interface ITeamComposition with properties: team ('radiant' | 'dire'), slots (IDraftSlot[])
 
+### Draft Types v2
+- [x] Create file app/types/draft.ts
+- [x] Define interface IDraftSlot with properties: hero (IHero | null), role (HeroRole | null), position (Position | null)
+- [x] Define type TeamSide as union type: 'radiant' | 'dire'
+- [x] Define interface IDraftState with properties: myTeam (IDraftSlot[]), enemyTeam (IDraftSlot[]), myTeamSide (TeamSide), recommendations (IHero[]), bannedHeroes (IHero[])
+- [x] Define interface ITeamComposition with properties: slots (IDraftSlot[])
+- [x] Define interface IRecommendationContext with properties: myTeamSide (TeamSide), myTeamPicks (IHero[]), enemyTeamPicks (IHero[]), bannedHeroes (IHero[])
+
 ### API Response Types
 - [x] Create file app/types/api.ts
 - [x] Define interface IOpenDotaHeroResponse matching OpenDota API hero endpoint response structure
@@ -96,6 +104,20 @@
 - [x] Add hero name tooltip on hover using CSS
 - [x] Implement click handler that calls onClick prop with hero data
 - [x] Add disabled state styling when hero is already picked
+
+### Hero Portrait Component v2
+- [ ] Create file app/components/ui/HeroPortrait.tsx
+- [ ] Define component props: hero (IHero | null), onClick (function), isSelected (boolean), isBanned (boolean), size ('small' | 'medium' | 'large')
+- [ ] Implement conditional rendering for empty state (show placeholder when hero is null)
+- [ ] Add Next.js Image component for hero portrait with proper sizing
+- [ ] Implement hover effect with scale transform and border highlight
+- [ ] Add selected state styling with accent color border
+- [ ] Add banned state styling with red overlay and X icon
+- [ ] Create loading skeleton state for when image is loading
+- [ ] Add hero name tooltip on hover
+- [ ] Implement click handler that calls onClick prop with hero data
+- [ ] Disable click handler when hero is banned
+- [ ] Add disabled state styling when hero is already picked or banned
 
 ### Role Selector Component
 - [x] Create file app/components/ui/RoleSelector.tsx

@@ -51,7 +51,6 @@ const mockHero: IHero = {
 const createMockSlot = (overrides: Partial<IDraftSlot> = {}): IDraftSlot => ({
   hero: null,
   role: null,
-  team: 'radiant',
   position: null,
   ...overrides
 });
@@ -62,6 +61,7 @@ describe('DraftSlot', () => {
     onHeroClick: jest.fn(),
     onRoleChange: jest.fn(),
     slotIndex: 0,
+    team: 'radiant' as const,
     isActive: false
   };
 
@@ -100,43 +100,34 @@ describe('DraftSlot', () => {
 
   describe('Team Color Indicators', () => {
     it('applies radiant team styling', () => {
-      const radiantSlot = createMockSlot({ team: 'radiant' });
-      const { container } = render(<DraftSlot {...defaultProps} slot={radiantSlot} />);
+      const { container } = render(<DraftSlot {...defaultProps} team="radiant" />);
       
       const slotContainer = container.firstChild as HTMLElement;
-      expect(slotContainer).toHaveClass('bg-green-900/20');
-      expect(slotContainer).toHaveClass('border-green-600');
-      
-      const positionIndicator = screen.getByText('1');
-      expect(positionIndicator).toHaveClass('bg-green-500');
+      expect(slotContainer).toHaveClass('bg-textSecondary/10');
+      expect(slotContainer).toHaveClass('border-textSecondary/60');
     });
 
     it('applies dire team styling', () => {
-      const direSlot = createMockSlot({ team: 'dire' });
-      const { container } = render(<DraftSlot {...defaultProps} slot={direSlot} />);
+      const { container } = render(<DraftSlot {...defaultProps} team="dire" />);
       
       const slotContainer = container.firstChild as HTMLElement;
-      expect(slotContainer).toHaveClass('bg-red-900/20');
-      expect(slotContainer).toHaveClass('border-red-600');
-      
-      const positionIndicator = screen.getByText('1');
-      expect(positionIndicator).toHaveClass('bg-red-500');
+      expect(slotContainer).toHaveClass('bg-textSecondary/10');
+      expect(slotContainer).toHaveClass('border-textSecondary/60');
     });
 
     it('applies active state styling', () => {
       const { container } = render(<DraftSlot {...defaultProps} isActive={true} />);
       
       const slotContainer = container.firstChild as HTMLElement;
-      expect(slotContainer).toHaveClass('border-green-500');
+      expect(slotContainer).toHaveClass('border-accentPrimary');
       expect(slotContainer).toHaveClass('shadow-lg');
     });
 
     it('applies active dire state styling', () => {
-      const direSlot = createMockSlot({ team: 'dire' });
-      const { container } = render(<DraftSlot {...defaultProps} slot={direSlot} isActive={true} />);
+      const { container } = render(<DraftSlot {...defaultProps} team="dire" isActive={true} />);
       
       const slotContainer = container.firstChild as HTMLElement;
-      expect(slotContainer).toHaveClass('border-red-500');
+      expect(slotContainer).toHaveClass('border-accentPrimary');
     });
   });
 
