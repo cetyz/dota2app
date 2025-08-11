@@ -174,6 +174,23 @@
 - [x] Implement click-outside-to-close functionality
 - [x] Add loading state while heroes are being fetched
 
+### Hero Selection Modal v2
+- [x] Create file app/components/draft/HeroSelectionModal.tsx
+- [x] Define component props: isOpen (boolean), onClose (function), onSelectHero (function), excludedHeroes (IHero[]), bannedHeroes (IHero[]), targetTeam ('my' | 'enemy')
+- [x] Implement modal overlay with semi-transparent background
+- [x] Create modal container with max-width and centered position
+- [x] Add modal header with dynamic title based on targetTeam ("Select Hero for Your Team" or "Select Enemy Hero")
+- [x] Integrate HeroSearchInput at the top of modal
+- [x] Add HeroGrid below search input
+- [x] Implement search functionality that filters hero grid
+- [x] Filter out both excluded heroes (already picked) and banned heroes from selection
+- [x] Add visual indicator for banned heroes (red overlay with ban icon)
+- [x] Disable selection for banned heroes with tooltip explaining they are banned
+- [x] Add keyboard navigation (Escape to close, Enter to select)
+- [x] Create smooth open/close animations with CSS transitions
+- [x] Implement click-outside-to-close functionality
+- [x] Add loading state while heroes are being fetched
+
 ## Phase 5: Draft Interface Implementation
 
 ### Draft Slot Component

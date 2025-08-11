@@ -35,6 +35,7 @@ export default function ModalTestPage() {
   const [excludedHeroes, setExcludedHeroes] = useState<IHero[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [lastSelectedHero, setLastSelectedHero] = useState<IHero | null>(null);
+  const [targetTeam, setTargetTeam] = useState<'my' | 'enemy'>('my');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -90,7 +91,14 @@ export default function ModalTestPage() {
                 onClick={handleOpenModal}
                 className="w-full px-4 py-2 bg-accentPrimary text-white rounded hover:bg-accentPrimary/80 transition-colors"
               >
-                Open Hero Selection Modal
+                Open Hero Selection Modal ({targetTeam === 'my' ? 'My Team' : 'Enemy Team'})
+              </button>
+
+              <button
+                onClick={() => setTargetTeam(targetTeam === 'my' ? 'enemy' : 'my')}
+                className="w-full px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-500 transition-colors"
+              >
+                Switch Target Team: {targetTeam === 'my' ? 'My Team' : 'Enemy Team'}
               </button>
 
               <button
@@ -242,6 +250,7 @@ export default function ModalTestPage() {
         excludedHeroes={excludedHeroes}
         bannedHeroes={bannedHeroes}
         heroes={mockHeroes}
+        targetTeam={targetTeam}
         isLoading={isLoading}
       />
     </div>

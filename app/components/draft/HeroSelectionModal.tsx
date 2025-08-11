@@ -13,6 +13,7 @@ interface HeroSelectionModalProps {
   excludedHeroes: IHero[];
   bannedHeroes: IHero[];
   heroes: IHero[];
+  targetTeam: 'my' | 'enemy';
   isLoading?: boolean;
 }
 
@@ -23,11 +24,17 @@ export default function HeroSelectionModal({
   excludedHeroes,
   bannedHeroes,
   heroes,
+  targetTeam,
   isLoading = false
 }: HeroSelectionModalProps) {
   const [searchValue, setSearchValue] = useState('');
   const modalRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Generate dynamic title based on target team
+  const modalTitle = targetTeam === 'my' 
+    ? 'Select Hero for Your Team' 
+    : 'Select Enemy Hero';
 
   // Filter heroes based on search, excluded heroes, and banned heroes
   const filteredHeroes = useMemo(() => {
@@ -122,7 +129,7 @@ export default function HeroSelectionModal({
         {/* Modal Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <h2 id="modal-title" className="text-xl font-semibold text-textLight">
-            Select Hero
+            {modalTitle}
           </h2>
           <button
             onClick={onClose}

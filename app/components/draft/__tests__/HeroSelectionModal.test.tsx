@@ -71,6 +71,7 @@ describe('HeroSelectionModal', () => {
     excludedHeroes: [],
     bannedHeroes: [],
     heroes: mockHeroes,
+    targetTeam: 'my' as const,
     isLoading: false
   };
 
@@ -82,7 +83,19 @@ describe('HeroSelectionModal', () => {
     render(<HeroSelectionModal {...defaultProps} />);
     
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByText('Select Hero')).toBeInTheDocument();
+    expect(screen.getByText('Select Hero for Your Team')).toBeInTheDocument();
+  });
+
+  it('displays correct title for my team', () => {
+    render(<HeroSelectionModal {...defaultProps} targetTeam="my" />);
+    
+    expect(screen.getByText('Select Hero for Your Team')).toBeInTheDocument();
+  });
+
+  it('displays correct title for enemy team', () => {
+    render(<HeroSelectionModal {...defaultProps} targetTeam="enemy" />);
+    
+    expect(screen.getByText('Select Enemy Hero')).toBeInTheDocument();
   });
 
   it('does not render modal when isOpen is false', () => {
