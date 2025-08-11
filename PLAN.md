@@ -155,17 +155,17 @@
 ## Phase 5: Draft Interface Implementation
 
 ### Draft Slot Component
-- [ ] Create file app/components/draft/DraftSlot.tsx
-- [ ] Define component props: slot (IDraftSlot), onHeroClick (function), onRoleChange (function), slotIndex (number)
-- [ ] Create container div with border and padding
-- [ ] Integrate HeroPortrait component for hero display
-- [ ] Add RoleSelector component below hero portrait
-- [ ] Display position number (1-5) in corner
-- [ ] Implement empty state with "+" icon to add hero
-- [ ] Add team color indicator (green for Radiant, red for Dire)
-- [ ] Create hover effect to show edit options
-- [ ] Add remove hero button (X icon) on hover
-- [ ] Implement slot highlighting when active
+- [x] Create file app/components/draft/DraftSlot.tsx
+- [x] Define component props: slot (IDraftSlot), onHeroClick (function), onRoleChange (function), slotIndex (number)
+- [x] Create container div with border and padding
+- [x] Integrate HeroPortrait component for hero display
+- [x] Add RoleSelector component below hero portrait
+- [x] Display position number (1-5) in corner
+- [x] Implement empty state with "+" icon to add hero
+- [x] Add team color indicator (green for Radiant, red for Dire)
+- [x] Create hover effect to show edit options
+- [x] Add remove hero button (X icon) on hover
+- [x] Implement slot highlighting when active
 
 ### Team Draft Section
 - [ ] Create file app/components/draft/TeamDraftSection.tsx
