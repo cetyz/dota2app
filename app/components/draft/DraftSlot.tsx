@@ -54,8 +54,8 @@ export default function DraftSlot({
       className={`
         relative p-4 rounded-lg border-2 transition-all duration-300
         ${colorScheme.background}
-        ${isActive ? colorScheme.activeBorder : colorScheme.border}
-        ${isActive ? 'shadow-lg shadow-textSecondary/50' : 'hover:shadow-xl hover:shadow-textSecondary/40'}
+        ${isActive && !slot.hero ? colorScheme.activeBorder : colorScheme.border}
+        ${isActive && !slot.hero ? 'shadow-lg shadow-textSecondary/50' : 'hover:shadow-xl hover:shadow-textSecondary/40'}
         hover:brightness-110 hover:border-textSecondary
         group
       `}
@@ -74,11 +74,6 @@ export default function DraftSlot({
         </button>
       )}
 
-      {/* Team color indicator bar */}
-      <div className={`
-        absolute left-0 top-0 bottom-0 w-1 rounded-l-lg
-        ${colorScheme.indicator}
-      `} />
 
       <div className="flex flex-col items-center space-y-3">
         {/* Hero Portrait */}
@@ -87,7 +82,7 @@ export default function DraftSlot({
             <HeroPortrait 
               hero={slot.hero} 
               size="large"
-              isSelected={isActive}
+              isSelected={false}
             />
           ) : (
             <div className="w-24 h-14 bg-gray-800 border-2 border-gray-600 border-dashed rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-700 hover:border-gray-500 transition-colors">
