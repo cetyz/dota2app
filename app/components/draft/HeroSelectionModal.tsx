@@ -5,6 +5,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import HeroSearchInput from '../ui/HeroSearchInput';
 import HeroGrid from '../ui/HeroGrid';
 import { IHero } from '../../types/hero';
+import { TeamSide } from '../../types/draft';
 
 interface HeroSelectionModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface HeroSelectionModalProps {
   bannedHeroes: IHero[];
   heroes: IHero[];
   targetTeam: 'my' | 'enemy';
+  myTeamSide: TeamSide;
   isLoading?: boolean;
 }
 
@@ -25,6 +27,7 @@ export default function HeroSelectionModal({
   bannedHeroes,
   heroes,
   targetTeam,
+  myTeamSide,
   isLoading = false
 }: HeroSelectionModalProps) {
   const [searchValue, setSearchValue] = useState('');
@@ -32,9 +35,10 @@ export default function HeroSelectionModal({
   const overlayRef = useRef<HTMLDivElement>(null);
 
   // Generate dynamic title based on target team
+  const teamSideName = myTeamSide.charAt(0).toUpperCase() + myTeamSide.slice(1);
   const modalTitle = targetTeam === 'my' 
-    ? 'Select Hero for Your Team' 
-    : 'Select Enemy Hero';
+    ? `Select Hero for Your Team (${teamSideName})` 
+    : `Select Hero for Enemy Team (${myTeamSide === 'radiant' ? 'Dire' : 'Radiant'})`;
 
   // Filter heroes based on search, excluded heroes, and banned heroes
   const filteredHeroes = useMemo(() => {

@@ -216,17 +216,17 @@
 - [x] Add different interaction behavior for my team vs enemy team slots
 
 ### Team Selector Component
-- [ ] Create file app/components/draft/TeamSelector.tsx
-- [ ] Define component props: value (TeamSide), onChange (function)
-- [ ] Ensure previously created components take this TeamSide variable into account
-- [ ] Implement toggle button group with Radiant and Dire options
-- [ ] Style with team colors (green for Radiant, red for Dire)
-- [ ] Add icons or logos for each team side
-- [ ] Implement controlled component with value and onChange
-- [ ] Add hover states with appropriate team colors
-- [ ] Create smooth transition animation when switching teams
-- [ ] Add aria-label "Select your team side"
-- [ ] Position prominently near the top of the draft interface
+- [x] Create file app/components/draft/TeamSelector.tsx
+- [x] Define component props: value (TeamSide), onChange (function)
+- [x] Ensure previously created components take this TeamSide variable into account
+- [x] Implement toggle button group with Radiant and Dire options
+- [x] Style with team colors (green for Radiant, red for Dire)
+- [x] Add icons or logos for each team side
+- [x] Implement controlled component with value and onChange
+- [x] Add hover states with appropriate team colors
+- [x] Create smooth transition animation when switching teams
+- [x] Add aria-label "Select your team side"
+- [x] Position prominently near the top of the draft interface
 
 ### Team Draft Section
 - [ ] Create file app/components/draft/TeamDraftSection.tsx
