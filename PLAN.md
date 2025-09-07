@@ -336,34 +336,34 @@
 ## Phase 7: Recommendation System (v1 - Team-Aware)
 
 ### Recommendation Component
-- [ ] Create file app/components/draft/RecommendationPanel.tsx
-- [ ] Define component props: recommendations (IHero[]), onSelectRecommendation (function), onBanRecommendation (function), myTeamSide (TeamSide)
-- [ ] Create panel container with title "Recommended Heroes"
-- [ ] Add subtle indicator showing recommendations are for your team
-- [ ] Implement vertical layout for 5 recommendation slots
-- [ ] Add HeroPortrait for each recommended hero
-- [ ] Include role suggestion for each recommendation
-- [ ] Add "X" icon button on each recommendation to mark as banned
-- [ ] Implement hover state showing "X" icon more prominently
-- [ ] Style "X" button with red color on hover
-- [ ] Add tooltip "Mark as banned" for the X button
-- [ ] Add "Refresh" button to get new recommendations
-- [ ] Implement click handler to add recommendation to draft
-- [ ] Add click handler for ban button that calls onBanRecommendation
-- [ ] Add loading state while generating recommendations
-- [ ] Create empty state when no recommendations available
-- [ ] Add visual feedback when hero is marked as banned (fade out animation)
+- [x] Create file app/components/draft/RecommendationPanel.tsx
+- [x] Define component props: recommendations (IHero[]), onSelectRecommendation (function), onBanRecommendation (function), myTeamSide (TeamSide)
+- [x] Create panel container with title "Recommended Heroes"
+- [x] Add subtle indicator showing recommendations are for your team
+- [x] Implement vertical layout for 5 recommendation slots
+- [x] Add HeroPortrait for each recommended hero
+- [x] Include role suggestion for each recommendation
+- [x] Add "X" icon button on each recommendation to mark as banned
+- [x] Implement hover state showing "X" icon more prominently
+- [x] Style "X" button with red color on hover
+- [x] Add tooltip "Mark as banned" for the X button
+- [x] Add "Refresh" button to get new recommendations
+- [x] Implement click handler to add recommendation to draft
+- [x] Add click handler for ban button that calls onBanRecommendation
+- [x] Add loading state while generating recommendations
+- [x] Create empty state when no recommendations available
+- [x] Add visual feedback when hero is marked as banned (fade out animation)
 
 ### Recommendation Card Component
-- [ ] Create file app/components/draft/RecommendationCard.tsx
-- [ ] Define component props: hero (IHero), suggestedRole (HeroRole), onSelect (function), onBan (function)
-- [ ] Create card container with hero portrait and controls
-- [ ] Position "X" ban button in top-right corner of card
-- [ ] Add hero name and suggested role below portrait
-- [ ] Implement click handler on portrait for selection
-- [ ] Implement separate click handler on X button for banning
-- [ ] Add hover effects to distinguish between select and ban actions
-- [ ] Create smooth transition when card is removed after banning
+- [x] Create file app/components/draft/RecommendationCard.tsx
+- [x] Define component props: hero (IHero), suggestedRole (HeroRole), onSelect (function), onBan (function)
+- [x] Create card container with hero portrait and controls
+- [x] Position "X" ban button in top-right corner of card
+- [x] Add hero name and suggested role below portrait
+- [x] Implement click handler on portrait for selection
+- [x] Implement separate click handler on X button for banning
+- [x] Add hover effects to distinguish between select and ban actions
+- [x] Create smooth transition when card is removed after banning
 
 ### Team-Aware Recommendation Logic
 - [ ] Create file app/lib/recommendations.ts

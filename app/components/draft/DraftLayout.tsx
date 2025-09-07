@@ -7,6 +7,7 @@ import TeamSelector from './TeamSelector';
 import TeamDraftSection from './TeamDraftSection';
 import HeroSelectionModal from './HeroSelectionModal';
 import BannedHeroesPanel from './BannedHeroesPanel';
+import RecommendationPanel from './RecommendationPanel';
 
 interface DraftLayoutProps {
   draftState: IDraftState;
@@ -275,65 +276,14 @@ export default function DraftLayout({
           {/* Right Column - Recommendations and Banned Heroes */}
           <div className="xl:col-span-1 space-y-6">
             {/* Recommendations Panel */}
-            <div className="bg-gray-900/50 rounded-lg border border-textSecondary/30 p-6">
-              <div className="mb-4">
-                <h3 className="text-xl font-bold text-textLight">
-                  Recommendations
-                </h3>
-                <p className="text-xs text-textSecondary mt-1">
-                  Auto-updated based on current draft
-                </p>
-              </div>
-              
-              <div className="space-y-3">
-                {draftState.recommendations.length > 0 ? (
-                  draftState.recommendations.slice(0, 5).map((hero, index) => (
-                    <div
-                      key={hero.id}
-                      className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors duration-200"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gray-700 rounded flex items-center justify-center">
-                          <span className="text-xs text-textLight font-medium">
-                            {hero.localized_name.slice(0, 2)}
-                          </span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-textLight">
-                            {hero.localized_name}
-                          </p>
-                          <p className="text-xs text-textSecondary">
-                            Suggested role
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => handleRecommendationSelect(hero)}
-                          className="text-green-400 hover:text-green-300 text-sm"
-                          title="Select hero"
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => handleRecommendationBan(hero)}
-                          className="text-red-400 hover:text-red-300 text-sm"
-                          title="Mark as banned"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div className="text-center py-8">
-                    <p className="text-textSecondary text-sm">
-                      No recommendations available
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
+            <RecommendationPanel
+              recommendations={draftState.recommendations}
+              onSelectRecommendation={handleRecommendationSelect}
+              onBanRecommendation={handleRecommendationBan}
+              myTeamSide={draftState.myTeamSide}
+              isLoading={isLoadingHeroes}
+              onRefreshRecommendations={generateRecommendations}
+            />
 
             {/* Banned Heroes Panel */}
             <BannedHeroesPanel
