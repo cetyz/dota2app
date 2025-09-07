@@ -270,68 +270,68 @@
 ## Phase 6: State Management
 
 ### Initial App State and Flow
-- [ ] Create file app/hooks/useInitialRecommendations.ts
-- [ ] Implement hook that generates recommendations on app load
-- [ ] Trigger initial recommendations when user selects team side
-- [ ] Generate team-specific recommendations (Radiant-favored or Dire-favored heroes)
-- [ ] Update recommendations automatically when any hero is added to either team
-- [ ] Create smooth transition animation when recommendations update
-- [ ] Implement loading state for initial recommendation generation
-- [ ] Add persistence of team side selection in localStorage
-- [ ] Auto-select previously used team side on app reload
-- [ ] Generate initial 5 recommendations before any heroes are picked
-- [ ] Ensure recommendations are always visible and updating throughout draft
+- [x] Create file app/hooks/useInitialRecommendations.ts
+- [x] Implement hook that generates recommendations on app load
+- [x] Trigger initial recommendations when user selects team side
+- [x] Generate team-specific recommendations (Radiant-favored or Dire-favored heroes)
+- [x] Update recommendations automatically when any hero is added to either team
+- [x] Create smooth transition animation when recommendations update
+- [x] Implement loading state for initial recommendation generation
+- [x] Add persistence of team side selection in localStorage
+- [x] Auto-select previously used team side on app reload
+- [x] Generate initial 5 recommendations before any heroes are picked
+- [x] Ensure recommendations are always visible and updating throughout draft
 
 ### Draft Context
-- [ ] Create file app/contexts/DraftContext.tsx
-- [ ] Define DraftContext with value type IDraftState
-- [ ] Create DraftProvider component with children prop
-- [ ] Implement useState for managing draft state
-- [ ] Implement useState for managing banned heroes list
-- [ ] Implement useState for managing myTeamSide (radiant/dire)
-- [ ] Create setMyTeamSide function to update which team user is on
-- [ ] Create updateMyTeamSlot function to update specific slot in my team
-- [ ] Create updateEnemyTeamSlot function to update specific slot in enemy team
-- [ ] Implement addHeroToMyTeam function to add hero to my team
-- [ ] Implement addHeroToEnemyTeam function to add hero to enemy team
-- [ ] Create removeHeroFromMyTeam function
-- [ ] Create removeHeroFromEnemyTeam function
-- [ ] Implement updateRole function to change role for slot
-- [ ] Add banHero function to add hero to banned list
-- [ ] Create unbanHero function to remove hero from banned list
-- [ ] Implement isBanned function to check if hero is banned
-- [ ] Add clearBans function to reset banned heroes list
-- [ ] Add clearDraft function to reset all selections and bans
-- [ ] Create swapSlots function to swap two heroes within same team
-- [ ] Implement getAllPickedHeroes function to get all heroes from both teams
-- [ ] Create getRecommendationContext function that returns current state for recommendation engine
-- [ ] Export useDraft custom hook for consuming context
+- [x] Create file app/contexts/DraftContext.tsx
+- [x] Define DraftContext with value type IDraftState
+- [x] Create DraftProvider component with children prop
+- [x] Implement useState for managing draft state
+- [x] Implement useState for managing banned heroes list
+- [x] Implement useState for managing myTeamSide (radiant/dire)
+- [x] Create setMyTeamSide function to update which team user is on
+- [x] Create updateMyTeamSlot function to update specific slot in my team
+- [x] Create updateEnemyTeamSlot function to update specific slot in enemy team
+- [x] Implement addHeroToMyTeam function to add hero to my team
+- [x] Implement addHeroToEnemyTeam function to add hero to enemy team
+- [x] Create removeHeroFromMyTeam function
+- [x] Create removeHeroFromEnemyTeam function
+- [x] Implement updateRole function to change role for slot
+- [x] Add banHero function to add hero to banned list
+- [x] Create unbanHero function to remove hero from banned list
+- [x] Implement isBanned function to check if hero is banned
+- [x] Add clearBans function to reset banned heroes list
+- [x] Add clearDraft function to reset all selections and bans
+- [x] Create swapSlots function to swap two heroes within same team
+- [x] Implement getAllPickedHeroes function to get all heroes from both teams
+- [x] Create getRecommendationContext function that returns current state for recommendation engine
+- [x] Export useDraft custom hook for consuming context
 
 ### Hero Data Context
-- [ ] Create file app/contexts/HeroDataContext.tsx
-- [ ] Define HeroDataContext with heroes array and loading state
-- [ ] Create HeroDataProvider component
-- [ ] Implement useEffect to fetch heroes on mount
-- [ ] Add error state handling for failed API calls
-- [ ] Create refresh function to re-fetch hero data
-- [ ] Implement search functionality within context
-- [ ] Add filtering methods for roles and attributes
-- [ ] Export useHeroData custom hook
+- [x] Create file app/contexts/HeroDataContext.tsx
+- [x] Define HeroDataContext with heroes array and loading state
+- [x] Create HeroDataProvider component
+- [x] Implement useEffect to fetch heroes on mount
+- [x] Add error state handling for failed API calls
+- [x] Create refresh function to re-fetch hero data
+- [x] Implement search functionality within context
+- [x] Add filtering methods for roles and attributes
+- [x] Export useHeroData custom hook
 
 ### Local Storage Persistence
-- [ ] Create file app/hooks/useLocalStorage.ts
-- [ ] Implement generic useLocalStorage hook with TypeScript
-- [ ] Add JSON serialization and deserialization
-- [ ] Implement error handling for localStorage access
-- [ ] Create draft auto-save functionality using useLocalStorage
-- [ ] Include myTeam, enemyTeam, myTeamSide, and banned heroes in saved draft data
-- [ ] Add debouncing to prevent excessive writes
-- [ ] Implement draft history with max 5 saved drafts
-- [ ] Create function to load saved draft including team side and banned heroes
-- [ ] Add function to delete saved draft
-- [ ] Create separate storage key for persistent banned list across drafts
-- [ ] Implement option to carry over bans to new draft
-- [ ] Add storage for user's preferred team side (Radiant/Dire)
+- [x] Create file app/hooks/useLocalStorage.ts
+- [x] Implement generic useLocalStorage hook with TypeScript
+- [x] Add JSON serialization and deserialization
+- [x] Implement error handling for localStorage access
+- [x] Create draft auto-save functionality using useLocalStorage
+- [x] Include myTeam, enemyTeam, myTeamSide, and banned heroes in saved draft data
+- [x] Add debouncing to prevent excessive writes
+- [x] Implement draft history with max 5 saved drafts
+- [x] Create function to load saved draft including team side and banned heroes
+- [x] Add function to delete saved draft
+- [x] Create separate storage key for persistent banned list across drafts
+- [x] Implement option to carry over bans to new draft
+- [x] Add storage for user's preferred team side (Radiant/Dire)
 
 ## Phase 7: Recommendation System (v1 - Team-Aware)
 
