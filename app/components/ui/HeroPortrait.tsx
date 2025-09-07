@@ -6,6 +6,7 @@ import { IHero } from '../../types/hero';
 export interface HeroPortraitProps {
   hero: IHero | null;
   onClick?: (hero: IHero) => void;
+  onRightClick?: (hero: IHero, e: React.MouseEvent) => void;
   isSelected?: boolean;
   isBanned?: boolean;
   size?: 'small' | 'medium' | 'large';
@@ -14,6 +15,7 @@ export interface HeroPortraitProps {
 export default function HeroPortrait({
   hero,
   onClick,
+  onRightClick,
   isSelected = false,
   isBanned = false,
   size = 'medium'
@@ -30,6 +32,12 @@ export default function HeroPortrait({
   const handleClick = () => {
     if (hero && onClick && !isBanned) {
       onClick(hero);
+    }
+  };
+
+  const handleRightClick = (e: React.MouseEvent) => {
+    if (hero && onRightClick) {
+      onRightClick(hero, e);
     }
   };
 
@@ -70,7 +78,8 @@ export default function HeroPortrait({
         group
       `}
       onClick={handleClick}
-      title={isBanned ? `${hero.localized_name} (Banned)` : hero.localized_name}
+      onContextMenu={handleRightClick}
+      title={isBanned ? `${hero.localized_name} (Banned)` : `${hero.localized_name} (Right-click to ban)`}
     >
       <Image
         src={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.name.replace('npc_dota_hero_', '')}.png`}

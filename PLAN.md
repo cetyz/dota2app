@@ -238,21 +238,21 @@
 - [x] Implement animation when heroes are added
 
 ### Main Draft Layout
-- [ ] Create file app/components/draft/DraftLayout.tsx
-- [ ] Define component props: draftState (IDraftState), onDraftUpdate (function)
-- [ ] Create main container with full height and dark background
-- [ ] Add title "Dota 2 Draft Tool - All Pick Mode" at the top
-- [ ] Add TeamSelector component below title for choosing Radiant or Dire
-- [ ] Implement "My Team" section at the top (5 slots)
-- [ ] Add VS divider between teams
-- [ ] Implement "Enemy Team" section at the bottom (5 slots)
-- [ ] Apply appropriate team colors based on myTeamSide selection
-- [ ] Add recommendations panel on the right side labeled "Recommendations"
-- [ ] Add collapsible banned heroes panel showing list of banned heroes
-- [ ] Create responsive layout for mobile devices
-- [ ] Add draft action buttons (Clear Draft, Clear Bans, Save, Share)
-- [ ] Implement keyboard shortcuts display
-- [ ] Add info text showing which side user is playing (e.g., "Playing as: Radiant")
+- [x] Create file app/components/draft/DraftLayout.tsx
+- [x] Define component props: draftState (IDraftState), onDraftUpdate (function)
+- [x] Create main container with full height and dark background
+- [x] Add title "Dota 2 Draft Tool - All Pick Mode" at the top
+- [x] Add TeamSelector component below title for choosing Radiant or Dire
+- [x] Implement "My Team" section at the top (5 slots)
+- [x] Add VS divider between teams
+- [x] Implement "Enemy Team" section at the bottom (5 slots)
+- [x] Apply appropriate team colors based on myTeamSide selection
+- [x] Add recommendations panel on the right side labeled "Recommendations"
+- [x] Add collapsible banned heroes panel showing list of banned heroes
+- [x] Create responsive layout for mobile devices
+- [x] Add draft action buttons (Clear Draft, Clear Bans, Save, Share)
+- [x] Implement keyboard shortcuts display
+- [x] Add info text showing which side user is playing (e.g., "Playing as: Radiant")
 
 ### Banned Heroes Panel
 - [ ] Create file app/components/draft/BannedHeroesPanel.tsx

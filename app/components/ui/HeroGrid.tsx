@@ -7,6 +7,7 @@ import { IHero } from '../../types/hero';
 export interface HeroGridProps {
   heroes: IHero[];
   onHeroSelect: (hero: IHero) => void;
+  onHeroBan?: (hero: IHero) => void;
   selectedHeroes: IHero[];
   bannedHeroes: IHero[];
 }
@@ -17,6 +18,7 @@ type RoleFilter = string | null;
 export default function HeroGrid({
   heroes,
   onHeroSelect,
+  onHeroBan,
   selectedHeroes,
   bannedHeroes
 }: HeroGridProps) {
@@ -57,6 +59,14 @@ export default function HeroGrid({
     }
     onHeroSelect(hero);
   }, [bannedHeroes, onHeroSelect]);
+
+  // Handle right-click for banning
+  const handleHeroRightClick = useCallback((hero: IHero, e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent context menu
+    if (onHeroBan && !bannedHeroes.some(banned => banned.id === hero.id)) {
+      onHeroBan(hero);
+    }
+  }, [onHeroBan, bannedHeroes]);
 
   const clearFilters = useCallback(() => {
     setAttributeFilter(null);
@@ -177,8 +187,9 @@ export default function HeroGrid({
             <HeroPortrait
               hero={hero}
               onClick={handleHeroClick}
+              onRightClick={onHeroBan ? (hero, e) => handleHeroRightClick(hero, e) : undefined}
               isSelected={isHeroSelected(hero)}
-              disabled={isHeroBanned(hero)}
+              isBanned={isHeroBanned(hero)}
               size="medium"
             />
             

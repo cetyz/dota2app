@@ -11,6 +11,7 @@ interface HeroSelectionModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectHero: (hero: IHero) => void;
+  onBanHero?: (hero: IHero) => void;
   excludedHeroes: IHero[];
   bannedHeroes: IHero[];
   heroes: IHero[];
@@ -23,6 +24,7 @@ export default function HeroSelectionModal({
   isOpen,
   onClose,
   onSelectHero,
+  onBanHero,
   excludedHeroes,
   bannedHeroes,
   heroes,
@@ -175,6 +177,7 @@ export default function HeroSelectionModal({
               <HeroGrid
                 heroes={filteredHeroes}
                 onHeroSelect={handleHeroSelect}
+                onHeroBan={onBanHero}
                 selectedHeroes={[]}
                 bannedHeroes={bannedHeroes}
               />
