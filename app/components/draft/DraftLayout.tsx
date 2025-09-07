@@ -6,6 +6,7 @@ import { IHero } from '@/app/types/hero';
 import TeamSelector from './TeamSelector';
 import TeamDraftSection from './TeamDraftSection';
 import HeroSelectionModal from './HeroSelectionModal';
+import BannedHeroesPanel from './BannedHeroesPanel';
 
 interface DraftLayoutProps {
   draftState: IDraftState;
@@ -335,66 +336,12 @@ export default function DraftLayout({
             </div>
 
             {/* Banned Heroes Panel */}
-            <div className="bg-gray-900/50 rounded-lg border border-red-500/30 p-6">
-              <div className="flex items-center justify-between mb-4">
-                <button
-                  onClick={() => setBannedHeroesCollapsed(!bannedHeroesCollapsed)}
-                  className="flex items-center space-x-2 text-lg font-bold text-textLight hover:text-red-400 transition-colors duration-200"
-                >
-                  <span>Banned Heroes ({draftState.bannedHeroes.length})</span>
-                  <span className={`transform transition-transform duration-200 ${
-                    bannedHeroesCollapsed ? 'rotate-0' : 'rotate-180'
-                  }`}>
-                    ▼
-                  </span>
-                </button>
-                {draftState.bannedHeroes.length > 0 && (
-                  <button
-                    onClick={handleClearBans}
-                    className="text-xs text-red-400 hover:text-red-300 transition-colors duration-200"
-                  >
-                    Clear All
-                  </button>
-                )}
-              </div>
-
-              {!bannedHeroesCollapsed && (
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {draftState.bannedHeroes.length > 0 ? (
-                    draftState.bannedHeroes.map((hero) => (
-                      <div
-                        key={hero.id}
-                        className="flex items-center justify-between p-2 bg-red-900/20 rounded border border-red-500/30"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <div className="w-8 h-8 bg-red-700 rounded flex items-center justify-center">
-                            <span className="text-xs text-white font-medium">
-                              {hero.localized_name.slice(0, 2)}
-                            </span>
-                          </div>
-                          <span className="text-sm text-textLight">
-                            {hero.localized_name}
-                          </span>
-                        </div>
-                        <button
-                          onClick={() => handleUnbanHero(hero)}
-                          className="text-red-400 hover:text-red-300 text-sm"
-                          title="Remove ban"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="text-center py-4">
-                      <p className="text-textSecondary text-sm">
-                        No heroes banned
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+            <BannedHeroesPanel
+              bannedHeroes={draftState.bannedHeroes}
+              onUnbanHero={handleUnbanHero}
+              isCollapsed={bannedHeroesCollapsed}
+              onToggleCollapse={() => setBannedHeroesCollapsed(!bannedHeroesCollapsed)}
+            />
 
             {/* Keyboard Shortcuts Display */}
             <div className="bg-gray-900/50 rounded-lg border border-textSecondary/30 p-4">

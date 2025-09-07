@@ -255,17 +255,17 @@
 - [x] Add info text showing which side user is playing (e.g., "Playing as: Radiant")
 
 ### Banned Heroes Panel
-- [ ] Create file app/components/draft/BannedHeroesPanel.tsx
-- [ ] Define component props: bannedHeroes (IHero[]), onUnbanHero (function), isCollapsed (boolean), onToggleCollapse (function)
-- [ ] Create collapsible panel with header "Banned Heroes (X)" where X is count
-- [ ] Implement horizontal scrollable list of banned hero portraits
-- [ ] Add small size hero portraits to save space
-- [ ] Include remove button on each banned hero to unban
-- [ ] Add "Clear All Bans" button in panel header
-- [ ] Implement expand/collapse animation
-- [ ] Show placeholder text when no heroes are banned
-- [ ] Add tooltip on each hero showing hero name
-- [ ] Style with subtle red accent to indicate banned status
+- [x] Create file app/components/draft/BannedHeroesPanel.tsx
+- [x] Define component props: bannedHeroes (IHero[]), onUnbanHero (function), isCollapsed (boolean), onToggleCollapse (function)
+- [x] Create collapsible panel with header "Banned Heroes (X)" where X is count
+- [x] Implement horizontal scrollable list of banned hero portraits
+- [x] Add small size hero portraits to save space
+- [x] Include remove button on each banned hero to unban
+- [x] Add "Clear All Bans" button in panel header
+- [x] Implement expand/collapse animation
+- [x] Show placeholder text when no heroes are banned
+- [x] Add tooltip on each hero showing hero name
+- [x] Style with subtle red accent to indicate banned status
 
 ## Phase 6: State Management
 
